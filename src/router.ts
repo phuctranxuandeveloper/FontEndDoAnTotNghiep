@@ -1,0 +1,29 @@
+export { Recommand } from "./components/hero/Recommand";
+export { News } from "./components/hero/News";
+export { Treading } from "./components/hero/Treading";
+export { Hero } from "./components/hero/Hero";
+
+export { Layout } from "./components/layout/Layout";
+export { LayoutSideBar } from "./components/layout/LayoutSideBar";
+export { LayoutAdmin } from "./components/layout/LayoutAdmin";
+
+export { Home } from "./pages/Home";
+export { Browser } from "./pages/Browser";
+export { Charts } from "./pages/Charts";
+export { Artists } from "./pages/Artists";
+export { SongDetails } from "./pages/SongDetails";
+export { ArtistDetails } from "./pages/ArtistDetails";
+export { AlbumDetails } from "./pages/AlbumDetails";
+export { SongSearchs } from "./pages/SongSearchs";
+export { LoginPage } from "./pages/LoginPage";
+export { SignUpPage } from "./pages/SignUpPage";
+export { DashbroadPage } from "./pages/admin_pages/DashbroadPage";
+export { ManagerAlbumAddPage } from "./pages/admin_pages/ManagerAlbumAddPage";
+export { ManagerAlbumEditPage } from "./pages/admin_pages/ManagerAlbumEditPage";
+export { ManagerAlbumPage } from "./pages/admin_pages/ManagerAlbumPage";
+export { ManagerArtistAddPage } from "./pages/admin_pages/ManagerArtistAddPage";
+export { ManagerArtistEditPage } from "./pages/admin_pages/ManagerArtistEditPage";
+export { ManagerArtistPage } from "./pages/admin_pages/ManagerArtistPage";
+export { ManagerSongAddPage } from "./pages/admin_pages/ManagerSongAddPage";
+export { ManagerSongEditPage } from "./pages/admin_pages/ManagerSongEditPage";
+export { ManagerSongPage } from "./pages/admin_pages/ManagerSongPage";
