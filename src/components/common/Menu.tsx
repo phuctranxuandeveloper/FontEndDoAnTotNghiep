@@ -16,7 +16,7 @@ export const Menu = (props: Props) => {
   const [playlists, setPlaylist] = useState<Playlist[]>([]);
 
   const fetchingPlaylists = () => {
-    getPlaylists("2")
+    getPlaylists("5")
       .then((data) => {
         setPlaylist(data);
       })

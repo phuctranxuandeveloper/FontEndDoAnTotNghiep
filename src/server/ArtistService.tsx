@@ -74,5 +74,5 @@ export {
   searchArtist,
   createArtist,
   updateArtist,
-  deleteArtist
+  deleteArtist,
 };

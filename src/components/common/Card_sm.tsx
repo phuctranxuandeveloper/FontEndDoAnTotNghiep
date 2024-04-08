@@ -30,7 +30,7 @@ export const Card_sm = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null!);
 
   const checkingSongInFav = () => {
-    checkSongToFavorist(props.id, 2)
+    checkSongToFavorist(props.id, 5)
       .then((data) => {
         data ? setIsSongInFav(true) : setIsSongInFav(false);
       })
@@ -38,7 +38,7 @@ export const Card_sm = (props: Props) => {
   };
 
   const addSongToFav = () => {
-    addSongToFavorist(props.id, 2)
+    addSongToFavorist(props.id, 5)
       .then((data) => {
         if (data) {
           toast.success("Added Song with id: " + props.id + " to my favorist!");
@@ -55,7 +55,7 @@ export const Card_sm = (props: Props) => {
   };
 
   const removeSongToFav = () => {
-    removeSongToFavorist(props.id, 2)
+    removeSongToFavorist(props.id, 5)
       .then((data) => {
         if (data) {
           toast.success("Removed song with id: " + props.id + " in my favorist!");
