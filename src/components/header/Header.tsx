@@ -4,6 +4,8 @@ import profile from "../assets/images/b4.jpg";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
+import { useAuth } from "../../hooks/AuthProvider";
+import DropdownUser from "./DropdownUser";
 
 interface NavItem {
   id: number;
@@ -16,6 +18,7 @@ export const Header = () => {
     isActive ? "active" : "NavLink";
   const [isMenu, setIsMenu] = useState(false);
   const [resSearch, setResSearch] = useState<string>("");
+  const auth = useAuth();
 
   const navBar: NavItem[] = [
     {
@@ -82,13 +85,13 @@ export const Header = () => {
                   id="basic-addon2"
                   to={`/songs/search?q=${resSearch}`}
                 >
-                  <AiOutlineSearch size={20}/>
+                  <AiOutlineSearch size={20} />
                 </Link>
               </div>
             </div>
             {/* end-search */}
-            <button className="mx-3 rounded-full bg-green-500 px-6 py-1.5 text-whiten">
-              Upload
+            {/* <button className="mx-3 rounded-full bg-green-500 px-6 py-1.5 text-whiten" onClick={() => auth.logOut()}>
+              Logout
             </button>
             <div className="img h-10 w-10 rounded-full">
               <img
@@ -96,6 +99,13 @@ export const Header = () => {
                 alt="profile"
                 className="img h-10 w-10 cursor-pointer rounded-full bg-red-300 object-cover"
               />
+            </div> */}
+            <div className="flex items-center gap-3 2xsm:gap-7">
+              <ul className="flex items-center gap-2 2xsm:gap-4"></ul>
+
+              {/* <!-- User Area --> */}
+              <DropdownUser />
+              {/* <!-- User Area --> */}
             </div>
           </div>
         </div>

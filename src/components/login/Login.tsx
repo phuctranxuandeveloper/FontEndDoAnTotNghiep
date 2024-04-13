@@ -1,6 +1,40 @@
+import React, { useEffect, useState } from "react";
 import logo from "../assets/images/logo.png";
+import { LoginRequest } from "../../models/LoginRequest";
+import { useAuth } from "../../hooks/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loginRequest, setLoginRequest] = useState<LoginRequest | null>(null);
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  }
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  }
+
+  const updateLoginRequest = () => {
+    setLoginRequest({
+      username: username,
+      password: password
+    })
+  }
+
+  useEffect(() => {
+    updateLoginRequest();
+  }, [username, password])
+
+  const handleLogin = () => {
+    if(loginRequest !== null){
+      auth.loginAction(loginRequest);
+    }
+  }
   return (
     <>
       <div className="flex min-h-screen flex-col justify-center bg-gray-100 sm:py-12">
@@ -19,6 +53,8 @@ export const Login = () => {
               <input
                 type="text"
                 className="mb-5 mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+                value={username}
+                onChange={(e) => handleUsernameChange(e)}
               />
               <label className="block pb-1 text-sm font-semibold text-gray-600">
                 Password
@@ -26,10 +62,13 @@ export const Login = () => {
               <input
                 type="text"
                 className="mb-5 mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+                value={password}
+                onChange={(e) => handlePasswordChange(e)}
               />
               <button
                 type="button"
                 className="inline-block w-full rounded-lg bg-blue-500 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-blue-600 hover:shadow-md focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
+                onClick={() => handleLogin()}
               >
                 <span className="mr-2 inline-block">Login</span>
                 <svg
@@ -92,25 +131,11 @@ export const Login = () => {
             </div>
           </div>
           <div className="py-5">
-            <div className="grid grid-cols-2 gap-1">
-              <div className="whitespace-nowrap text-center sm:text-left">
-                <button className="mx-5 cursor-pointer rounded-lg px-5 py-4 text-sm font-normal text-gray-500 ring-inset transition duration-200 hover:bg-gray-200 focus:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="inline-block h-4 w-4 align-text-top"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
+            <div className="flex items-center justify-center">
+              <div className="whitespace-nowrap text-center sm:text-right">
+                <button className="mx-5 cursor-pointer rounded-lg px-5 py-4 text-sm font-normal text-gray-500 ring-inset transition duration-200 hover:bg-gray-200 focus:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50" onClick={() => navigate("/signup")}>
                   <span className="ml-1 inline-block">
-                    Back to your-app.com
+                    Sign Up
                   </span>
                 </button>
               </div>
